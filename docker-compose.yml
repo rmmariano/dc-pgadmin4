@@ -13,7 +13,7 @@ services:
     ports:
       - 15432:5432
     networks:
-      - postgresql-network
+      - pgadmin4-network
 
   pgadmin4:
     hostname: pgadmin4
@@ -29,9 +29,9 @@ services:
     depends_on:
       - postgis
     networks:
-      - postgresql-network
+      - pgadmin4-network
     # http://localhost:15430/
 
 networks:
-  postgresql-network:
-    driver: bridge
+  pgadmin4-network:
+    driver: ${PGADMIN4_NETWORK_DRIVER}
