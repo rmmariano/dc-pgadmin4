@@ -24,14 +24,16 @@ services:
       - ./env/pgadmin4.env
     volumes:
       - ./volumes/pgadmin4:/var/lib/pgadmin
-    ports:
-      - 15430:80
+    # ports:
+    #   - 15430:80
     depends_on:
       - postgis
-    networks:
-      - pgadmin4-network
-    # http://localhost:15430/
+    # networks:
+    #   - pgadmin4-network
+    # http://localhost:15430/ (pgadmin4-network network)
+    network_mode: host
+    # http://localhost/ (host network)
 
 networks:
   pgadmin4-network:
-    driver: ${PGADMIN4_NETWORK_DRIVER}
+    driver: bridge
